@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Alert } from 'react-native';
+import { StyleSheet, Alert, Button } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
@@ -51,19 +51,15 @@ export default function CounterScreen() {
       </ThemedView>
 
       <ThemedView style={styles.buttonContainer}>
-        <ThemedView 
-          style={[styles.button, loading && styles.buttonDisabled]}
-          onTouchEnd={() => updateCounter('increment')}
-        >
-          <ThemedText style={styles.buttonText}>+1</ThemedText>
-        </ThemedView>
+        <Button 
+          title="+1"
+          onPress={() => updateCounter('increment')}
+        />
         
-        <ThemedView 
-          style={[styles.button, loading && styles.buttonDisabled]}
-          onTouchEnd={() => updateCounter('decrement')}
-        >
-          <ThemedText style={styles.buttonText}>-1</ThemedText>
-        </ThemedView>
+        <Button 
+          title="-1"
+          onPress={() => updateCounter('decrement')}
+        />
       </ThemedView>
     </ThemedView>
   );
@@ -95,21 +91,5 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     gap: 20,
-  },
-  button: {
-    backgroundColor: '#007AFF',
-    borderRadius: 10,
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    minWidth: 80,
-    alignItems: 'center',
-  },
-  buttonDisabled: {
-    opacity: 0.5,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 24,
-    fontWeight: 'bold',
   },
 });
